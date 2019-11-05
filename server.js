@@ -1,24 +1,63 @@
-var nodemailer = require('nodemailer');
+const mysql = require('mysql');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+var cors = require('cors');
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'nazarmartyniuk2000@gmail.com',
-        pass: '12345rez_Man54321'
-    }
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+var connection = mysql.createConnection({
+    host: '127.0.0.1',
+    port: '3306',
+    host: "localhost",
+    user: "nazar304_superadmin",
+    password: "dogfactory123",
+    database: "nazar304_dogfactory"
 });
 
-var mailOptions = {
-    from: 'nazarmartyniuk2000@gmail.com',
-    to: 'rezik013@ukr.net',
-    subject: 'Volvobaza',
-    text: 'That was easy!'
-};
+app.post('/addclient', function (req, res) {
+    var client = req.body;
+    connection.query('INSERT INTO clients SET ?', client, function (err, result) {
+        if (err) throw err;
+        res.send(JSON.stringify(result.insertId));
+    });
+});
 
-transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
+app.get('/getitems', function (req, res) {
+    connection.query("SELECT * FROM items", function (err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get('/getsearchitems/:search', function (req, res) {
+    var search = req.params.search;
+    connection.query(`SELECT * FROM items WHERE name LIKE '%${search}%'`, function (err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get("/getitem/:id", function (req, res) {
+    var id = req.params.id;
+    connection.query(`SELECT * FROM items WHERE id=${id}`, function (err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.get("/getitemimage/:imageid", function (req, res) {
+    var id = req.params.imageid;
+    connection.query(`SELECT * FROM item_images WHERE item_id=${id} LIMIT 1`, function (err, result) {
+        if (err) throw err;
+        connection.query(`SELECT * FROM images WHERE id=${result[0].image_id} LIMIT 1`, function (err, result) {
+            if (err) throw err;
+            res.send(JSON.stringify(result[0].url));
+        });
+    });
+});
+
+app.listen(3333, function () {
+    console.log('Example app listening on port 3333!');
 });
