@@ -23,7 +23,7 @@
     <form class="staff-add-form" action="add_staff.php" method='post' class="form">
         <input class="staff-login" type="text" placeholder="Введите логин" maxLength="32" minLength="5" name="login" required />
         <input class="staff-password" type="password" placeholder="Введите пароль" maxLenghth="32" minLength="8" name="password" required />
-        <select class="status" name="staff-status" required>
+        <select class="status" name="status" required>
             <option class="status-option" value="added">Добавлятор</option>
             <option class="status-option" value="operator">Оператор</option>
             <option class="status-option" value="checker">Чекер</option>

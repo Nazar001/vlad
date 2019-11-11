@@ -32,7 +32,7 @@
                 <div class="staff-login">'.$myrow['login'].'</div>
                 <div class="staff-password">'.$myrow['password'].'</div>
                 <div class="staff-region">'.$myrow['region'].'</div>    
-                <div class="staff-status">'.$myrow['status'].'</div>    
+                <div class="status">'.$myrow['status'].'</div>    
                 <div class="staff-whocreated">'.$myrow['whocreated'].'</div>    
                 </li>');
             }
