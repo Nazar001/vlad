@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_SESSION['status'] != "admin") {
-        header('Location: http://'.$_SERVER['HTTP_HOST']."/dogfactory");    
+        header('Location: http://'.$_SERVER['HTTP_HOST']);    
     }
 ?>
 

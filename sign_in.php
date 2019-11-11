@@ -49,14 +49,14 @@
                         $link = "/error";
                         break;
                 }
-                header('Location: http://'.$_SERVER['HTTP_HOST']."/dogfactory".$link); 
+                header('Location: http://'.$_SERVER['HTTP_HOST'].$link); 
             } else {
-                header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/dogfactory');
+                header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'');
                 echo "<div class='error'>Неверный пароль!</div>";
             }
         }
         else {
-            header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/dogfactory');
+            header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'');
             echo "<div class='error'>Пользыватель не существует.</div>";
         }
     ?>

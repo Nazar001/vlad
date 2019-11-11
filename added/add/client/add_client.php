@@ -28,17 +28,17 @@
         if($result){
             $myrow = mysqli_fetch_array($result);
             if (!empty($myrow)) {
-                header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/dogfactory/superadmin/add/client');
+                header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/superadmin/add/client');
                 exit ("<div class='warning'>Клиент с даным номером телефона уже имеится в базе даных!</div>");
             }
         }   
         $result2 = mysqli_query ($db, "INSERT INTO clients (name, phone, region, whocreated, comment, callback) VALUES('$name','$phone','$region', '$whocreated', '', '')");
         if ($result2=='TRUE')
         {
-            header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/dogfactory/superadmin/add/client');
+            header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/superadmin/add/client');
             echo "<div class='sucsess'>Клиент успешно добавлен!</div>";
         } else {
-            header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/dogfactory/superadmin/add/client');
+            header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/superadmin/add/client');
             echo "<div class='error'>Ошибка! Клиент не был внесен в базу даных!!!</div>";
         }
     ?>

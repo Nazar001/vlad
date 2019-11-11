@@ -25,7 +25,7 @@
                 break;
         }
         if($link != ""){
-            header('Location: http://'.$_SERVER['HTTP_HOST']."/dogfactory".$link);
+            header('Location: http://'.$_SERVER['HTTP_HOST'].$link);
         }
     }
 ?>

@@ -11,7 +11,7 @@
     <?php
         session_start();
         session_destroy();
-        header('Refresh: 2; url=http://'.$_SERVER['HTTP_HOST'].'/dogfactory');
+        header('Refresh: 2; url=http://'.$_SERVER['HTTP_HOST'].'');
         echo "<div class='exit-block'>Сесия завершена!</div>";
     ?>
 </body>
