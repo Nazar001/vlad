@@ -36,7 +36,7 @@
                 exit ("<div class='warning'>Пользыватель с даным никнеймом существует!</div>");
             }
         }   
-        $result2 = mysqli_query ($db, "INSERT INTO admins (login, password, region, status, whocreated) VALUES('$login','$password','$status','$region','$whocreated')");
+        $result2 = mysqli_query ($db, "INSERT INTO admins (login, password, status, whocreated, region) VALUES('$login','$password','$status','$whocreated','$region')");
         if ($result2=='TRUE')
         {
             header('Refresh: 3; url=http://'.$_SERVER['HTTP_HOST'].'/superadmin/add/staff');
